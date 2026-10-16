@@ -1,0 +1,6 @@
+domains:
+  - helloworld
+node_version: "22"
+secured: true
+proxy:
+  port: 3001
