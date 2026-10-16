@@ -1,0 +1,19 @@
+#!/bin/bash
+# Hook pre-commit : ajoute suivi/commitInfo.txt si on répond y
+
+INFOPATH=suivi
+INFOFILE=$INFOPATH/commitInfo.txt
+
+read -p "Ajouter le fichier de suivi dans ce commit (y/n) ? " yn < /dev/tty
+yn=${yn:-n}
+
+case $yn in
+    [Yy]* )
+        mkdir -p $INFOPATH
+        echo "commit vérifié le $(date '+%d/%m/%Y %H:%M:%S')" > $INFOFILE
+        git add $INFOFILE
+        exit 0;;
+    * )
+        exit 0;;
+esac
+exit 0
